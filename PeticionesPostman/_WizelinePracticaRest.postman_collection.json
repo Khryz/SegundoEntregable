@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "2a1f11a9-30b3-4bdc-811f-7445047fc706",
+		"name": "_WizelinePracticaRest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8895801"
+	},
+	"item": [
+		{
+			"name": "/api/createUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/createUser?user=k10000&pass=Pass1@",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"createUser"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "k10000"
+						},
+						{
+							"key": "pass",
+							"value": "Pass1@"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/login?user=k10000&pass=Pass1@",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "k10000"
+						},
+						{
+							"key": "pass",
+							"value": "Pass1@"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/getCredentials",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/getCredentials?user=k10000&pass=Pass1@&fecha=14-09-2022",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getCredentials"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "k10000"
+						},
+						{
+							"key": "pass",
+							"value": "Pass1@"
+						},
+						{
+							"key": "fecha",
+							"value": "14-09-2022"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/getAccounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/getAccounts",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getAccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/createUsers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"user\": \"1@wizeline.com\",\r\n        \"password\": \"pass1\"\r\n    },  \r\n    {\r\n        \"user\": \"2@wizeline.com\",\r\n        \"password\": \"pass2\"\r\n    },\r\n    {\r\n        \"user\": \"3@wizeline.com\",\r\n        \"password\": \"pass2\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/createUsers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"createUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/getAccountsGroupByType",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/getAccountsGroupByType",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getAccountsGroupByType"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
