@@ -1,4 +1,4 @@
-En este segundo entregable se encuentran las peticiones de postman y el proyecto desarrollado durante las clases:
+En este segundo entregable se encuentran las peticiones de postman y el proyecto desarrollado durante las clases, todo esto dentro de la rama master:
 
 Peticiones postman:
   * POST - /api/createUser - Params:user, pass:  Crean a un usuario
