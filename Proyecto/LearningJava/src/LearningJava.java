@@ -3,10 +3,7 @@ import com.wizeline.BO.BankAccountBO;
 import com.wizeline.BO.BankAccountBOImpl;
 import com.wizeline.BO.UserBO;
 import com.wizeline.BO.UserBOImpl;
-import com.wizeline.DTO.BankAccountDTO;
-import com.wizeline.DTO.MiResponseDTO;
-import com.wizeline.DTO.ResponseDTO;
-import com.wizeline.DTO.UserDTO;
+import com.wizeline.DTO.*;
 import com.wizeline.exceptions.ExcepcionGenerica;
 import com.wizeline.notificacion.NotificacionFactory;
 import com.wizeline.notificacion.Notifications;
@@ -23,10 +20,8 @@ import java.net.URLDecoder;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -287,11 +282,68 @@ public class LearningJava extends Thread{
                 List<BankAccountDTO> accounts = bankAccountBO.getAccounts();
                 /* Uso de por lo menos un mapa: Mapa para agrupar cuentas */
                 Map<String, List<BankAccountDTO>> groupedAccounts;
+
+                /* Uso de por lo menos 1 Interfaz Funcional: Function */
+                /* Uso de por lo menos 1 función Lambda y asignada a una Interfaz Funcional */
                 Function<BankAccountDTO, String> groupFunction = (account) -> account.getAccountType().toString();
+
+                /* Uso de por lo menos 1 Stream de datos: collect */
+                /* Uso de por lo menos 2 tipos de colectores: 1 - Collectors.groupingBy */
+                /* Uso de por lo menos 2 operaciones intermedias:1 - groupedAccounts */
                 groupedAccounts = accounts.stream().collect(Collectors.groupingBy(groupFunction));
 
 
                 JSONObject json = new JSONObject(groupedAccounts);
+                responseText = json.toString();
+
+                exchange.getResponseHeaders().set("contentType", "application/json; charset=UTF-8");
+                exchange.sendResponseHeaders(200, responseText.getBytes().length);
+            } else {
+                /** 405 Method Not Allowed */
+                exchange.sendResponseHeaders(405, -1);
+            }
+            OutputStream output = exchange.getResponseBody();
+            Instant finalDeEjecucion = Instant.now();
+            /**
+             * Always remember to close the resources you open.
+             * Avoid memory leaks
+             */
+            log.info("LearningJava - Cerrando recursos ...");
+            String total = new String(String.valueOf(Duration.between(inicioDeEjecucion, finalDeEjecucion).toMillis()).concat(" segundos."));
+            log.info("Tiempo de respuesta: ".concat(total));
+            output.write(responseText.getBytes());
+            output.flush();
+            output.close();
+            exchange.close();
+        }));
+
+        server.createContext("/api/suma/cantidadArray", (exchange -> {
+            Instant inicioDeEjecucion = Instant.now();
+            String responseText = "";
+            /** Validates the type of http request  */
+            if ("GET".equals(exchange.getRequestMethod())) {
+                log.info("LearningJava - Procesando peticion HTTP de tipo GET");
+                SumaResponseDTO sumaResponseDTO = new SumaResponseDTO();
+                SumaRequestDTO sumaRequestDTO = new SumaRequestDTO();
+
+                Map<String, String> params = splitQuery(exchange.getRequestURI());
+
+                sumaRequestDTO = sumaRequestDTO.getRequest(params);
+
+                Integer[] intArray = {0,1,2,3,4,5};
+                /* Uso de por lo menos 2 tipos de colectores: 2 - Collectors.counting */
+                /* Uso de por lo menos 2 operaciones intermedias:2 - counting */
+                long count = Arrays.stream(intArray).collect(Collectors.counting());
+
+                BiFunction<Double, Double, Double> sumaLambda = (x , y) -> x+y;
+                Double sumaTotal = sumaLambda.apply(sumaRequestDTO.getNumero1(), sumaRequestDTO.getNumero2());
+
+                System.out.println(sumaTotal);
+
+                sumaResponseDTO.setSumaTotal(sumaTotal);
+                sumaResponseDTO.setCantidadArray(count);
+
+                JSONObject json = new JSONObject(sumaResponseDTO);
                 responseText = json.toString();
 
                 exchange.getResponseHeaders().set("contentType", "application/json; charset=UTF-8");
