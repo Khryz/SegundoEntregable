@@ -162,6 +162,36 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "/api/suma/cantidadArray",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/suma/cantidadArray?numero1=3&numero2=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"suma",
+						"cantidadArray"
+					],
+					"query": [
+						{
+							"key": "numero1",
+							"value": "3"
+						},
+						{
+							"key": "numero2",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
