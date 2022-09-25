@@ -60,3 +60,13 @@ Peticiones postman:
 
   * Patron de diseño creacional: Builder
   * Patron de diseño creacional: Factory method
+
+  * Uso de por lo menos 1 Interfaz Funcional: Function
+  * Uso de por lo menos 1 función Lambda y asignada a una Interfaz Funcional
+  * Uso de por lo menos 1 Stream de datos: collect
+
+  * Uso de por lo menos 2 operaciones intermedias:1 - groupedAccounts
+  * Uso de por lo menos 2 operaciones intermedias:2 - counting
+
+  * Uso de por lo menos 2 tipos de colectores: 1 - Collectors.groupingBy
+  * Uso de por lo menos 2 tipos de colectores: 2 - Collectors.counting
