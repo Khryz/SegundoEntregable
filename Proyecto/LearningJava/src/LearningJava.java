@@ -25,6 +25,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /* Herencia en alguna clase: LearningJava */
 public class LearningJava extends Thread{
@@ -330,10 +331,13 @@ public class LearningJava extends Thread{
 
                 sumaRequestDTO = sumaRequestDTO.getRequest(params);
 
-                Integer[] intArray = {0,1,2,3,4,5};
+                Integer[] intArray = {6,3,1,2,4,5,0};
                 /* Uso de por lo menos 2 tipos de colectores: 2 - Collectors.counting */
-                /* Uso de por lo menos 2 operaciones intermedias:2 - counting */
                 long count = Arrays.stream(intArray).collect(Collectors.counting());
+
+                /* Uso de por lo menos 2 operaciones intermedias:2 - streamOrdenado */
+                List<Integer> streamOrdenado = new ArrayList<>();
+                Arrays.stream(intArray).sorted().forEach(element -> streamOrdenado.add(element));
 
                 BiFunction<Double, Double, Double> sumaLambda = (x , y) -> x+y;
                 Double sumaTotal = sumaLambda.apply(sumaRequestDTO.getNumero1(), sumaRequestDTO.getNumero2());
@@ -342,6 +346,7 @@ public class LearningJava extends Thread{
 
                 sumaResponseDTO.setSumaTotal(sumaTotal);
                 sumaResponseDTO.setCantidadArray(count);
+                sumaResponseDTO.setListaOrdenada(streamOrdenado);
 
                 JSONObject json = new JSONObject(sumaResponseDTO);
                 responseText = json.toString();
