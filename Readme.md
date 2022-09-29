@@ -57,7 +57,7 @@ Peticiones postman:
   * Uso de por lo menos dos beans: Bean ErrorDTO
   * Uso de por lo menos dos beans: Bean ResponseDTO
   * Uso de por lo menos dos beans: Bean UserDTO
-
+  
   * Patron de diseño creacional: Builder
   * Patron de diseño creacional: Factory method
 
@@ -70,3 +70,10 @@ Peticiones postman:
 
   * Uso de por lo menos 2 tipos de colectores: 1 - Collectors.groupingBy
   * Uso de por lo menos 2 tipos de colectores: 2 - Collectors.counting
+
+
+***** Actualización de segundo entregable - Segunda operación intermedia faltante:  streamOrdenado *****
+
+Podemos encontrar este ejemplo de codigo buscando el comentario:
+
+* Uso de por lo menos 2 operaciones intermedias:2 - streamOrdenado
