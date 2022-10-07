@@ -337,7 +337,8 @@ public class LearningJava extends Thread{
 
                 /* Uso de por lo menos 2 operaciones intermedias:2 - streamOrdenado */
                 List<Integer> streamOrdenado = new ArrayList<>();
-                Arrays.stream(intArray).sorted().forEach(element -> streamOrdenado.add(element));
+                Stream<Integer> listaStream = Arrays.stream(intArray).sorted();
+                System.out.println(listaStream);
 
                 BiFunction<Double, Double, Double> sumaLambda = (x , y) -> x+y;
                 Double sumaTotal = sumaLambda.apply(sumaRequestDTO.getNumero1(), sumaRequestDTO.getNumero2());
